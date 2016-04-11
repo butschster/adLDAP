@@ -49,7 +49,11 @@ class Entry extends AbstractObject
                         $data = [];
 
                         for ($i = 0; $i <= $attributes[$key]['count']; $i++) {
-                            $data[] = $attributes[$key][$i];
+                            if (isset($attributes[$key][$i])) {
+                                $data[] = $attributes[$key][$i];
+                            } else {
+                                $data[] = null;
+                            }
                         }
 
                         $this->setAttribute($key, array_filter($data));
